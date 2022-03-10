@@ -1,0 +1,26 @@
+.filter {
+    padding: 10px;
+    border: 1px solid black;
+    margin-left: 10px;
+}
+
+.selected {
+    background-color: darkgray;
+}
+
+.controls{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    margin: 10px auto auto;
+}
+
+.list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.picture{
+    padding: 10px;
+}

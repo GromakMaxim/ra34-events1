@@ -9,6 +9,12 @@ export default class Portfolio extends Component {
         this.state = {
             selected: "Websites"
         }
+
+        this.changeState = this.changeState.bind(this);
+    }
+
+    changeState(newFilter){
+        this.setState({selected: newFilter});
     }
 
     render() {
@@ -17,6 +23,7 @@ export default class Portfolio extends Component {
                 <Toolbar
                     filters={["All", "Websites", "Flayers", "Business Cards"]}
                     selected={this.state.selected}
+                    changeStateFunc={this.changeState}
                 />
 
                 <ProjectList actualFilter={this.state.selected}/>

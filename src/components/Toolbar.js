@@ -8,18 +8,33 @@ export default class Toolbar extends Component {
     }
 
     handleClick(e) {
-        e.currentTarget.classList.add('selected');
-        console.log(e.currentTarget.textContent);
+        this.props.changeStateFunc(e.currentTarget.textContent)
     }
 
+
+
     renderButton(filter) {
-        return <SimpleButton
-            name={filter}
-            key={filter}
-            func={
-                (e) => this.handleClick(e)
-            }
-        />;
+        if (this.props.selected === filter){
+            console.log('render selected')
+            return <SimpleButton
+                name={filter}
+                key={filter}
+                func={
+                    (e) => this.handleClick(e)
+                }
+                cl = 'filter selected'
+            />;
+        } else {
+            console.log('render usual')
+            return <SimpleButton
+                name={filter}
+                key={filter}
+                func={
+                    (e) => this.handleClick(e)
+                }
+                cl = 'filter'
+            />;
+        }
     }
 
 

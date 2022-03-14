@@ -1,17 +1,38 @@
 import React, {Component} from "react";
 import SimpleButton from "./SimpleButton";
 
-export default class Toolbar extends Component{
+export default class Toolbar extends Component {
 
     constructor(props, context) {
         super(props, context);
     }
 
+    handleClick(e) {
+        e.currentTarget.classList.add('selected');
+        console.log(e.currentTarget.textContent);
+    }
+
+    renderButton(filter) {
+        return <SimpleButton
+            name={filter}
+            key={filter}
+            func={
+                (e) => this.handleClick(e)
+            }
+        />;
+    }
+
+
     render() {
         let arr = [];
-        this.props.filters.forEach(filter=>{
-            arr.push(<SimpleButton name={filter} key={filter}/>);
+        this.props.filters.forEach(filter => {
+            let btn = this.renderButton(filter);
+            arr.push(btn);
         });
-        return arr;
+        return (
+            <div className='controls'>
+                {arr}
+            </div>
+        );
     }
 }

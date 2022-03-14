@@ -81,15 +81,24 @@ export default class ProjectList extends Component {
     }
 
     render() {
-        let arr = this.pics.filter((pic) => {
-            return pic.category.trim() === this.props.actualFilter.trim()
-        });
         let resultArr = [];
+        if (this.props.actualFilter !== 'All') {
+            let arr = this.pics.filter((pic) => {
+                return pic.category === this.props.actualFilter
+            });
 
-        arr.forEach(i => {
-            let pic = this.renderPicture(i.img, i.id);
-            resultArr.push(pic);
-        })
+
+            arr.forEach(i => {
+                let pic = this.renderPicture(i.img, i.id);
+                resultArr.push(pic);
+            })
+        } else {
+            this.pics.forEach(i=>{
+                let pic = this.renderPicture(i.img, i.id);
+                resultArr.push(pic);
+            });
+        }
+
         return (
             <div className='list'>
                 {resultArr}

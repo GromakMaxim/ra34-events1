@@ -8,9 +8,7 @@ function App() {
 
     return (
         <div>
-            <div>
-                <Portfolio/>
-            </div>
+            <Portfolio/>
         </div>
     );
 }

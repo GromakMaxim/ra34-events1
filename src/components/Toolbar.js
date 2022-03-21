@@ -1,43 +1,39 @@
-import React, {Component} from "react";
+import React from "react";
 import SimpleButton from "./SimpleButton";
 
-export default class Toolbar extends Component {
-
-    constructor(props, context) {
-        super(props, context);
-    }
-
-    handleClick(e) {
-        this.props.changeStateFunc(e.currentTarget.textContent.trim())
+function Toolbar(props) {
+    function handleClick(e) {
+        props.changeStateFunc(e.currentTarget.textContent.trim())
     }
 
 
-
-    renderButton(filter) {
+    function renderButton(filter, props) {
         let cl = 'filter';
-        if (filter === this.props.selected) cl = cl + ' selected';
+        if (filter === props.selected) cl = cl + ' selected';
 
         return <SimpleButton
             name={filter}
             key={filter}
             func={
-                (e) => this.handleClick(e)
+                (e) => handleClick(e)
             }
-            cl = {cl}
+            cl={cl}
         />;
     }
 
 
-    render() {
-        let arr = [];
-        this.props.filters.forEach(filter => {
-            let btn = this.renderButton(filter);
-            arr.push(btn);
-        });
-        return (
-            <div className='controls'>
-                {arr}
-            </div>
-        );
-    }
+    let arr = [];
+    props.filters.forEach(filter => {
+        let btn = renderButton(filter, props);
+        arr.push(btn);
+    });
+
+    return (
+        <div className='controls'>
+            {arr}
+        </div>
+    );
+
 }
+
+export default Toolbar;

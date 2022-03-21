@@ -1,14 +1,9 @@
-import React, {Component} from "react";
+import React from "react";
 
-export default class Picture extends Component {
-
-    constructor(props, context) {
-        super(props, context);
-    }
-
-    render() {
-        return (
-            <img className='picture' src={this.props.path} alt='simple picture'/>
-        );
-    }
+function Picture(props) {
+    return (
+        <img className='picture' src= {props.path} alt='simple'/>
+    );
 }
+
+export default Picture;

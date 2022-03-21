@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Toolbar from "./Toolbar";
-import ProjectList from "./ProjectList";
+import {ProjectList} from "./ProjectList";
 
 export default class Portfolio extends Component {
 
@@ -13,7 +13,7 @@ export default class Portfolio extends Component {
         this.changeState = this.changeState.bind(this);
     }
 
-    changeState(newFilter){
+    changeState(newFilter) {
         this.setState({selected: newFilter});
     }
 
@@ -26,7 +26,9 @@ export default class Portfolio extends Component {
                     changeStateFunc={this.changeState}
                 />
 
-                <ProjectList actualFilter={this.state.selected}/>
+                <ProjectList
+                    actualFilter={this.state.selected}
+                />
 
             </div>
         );
